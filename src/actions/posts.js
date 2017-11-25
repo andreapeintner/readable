@@ -1,10 +1,11 @@
-import { fetchPosts, savePostToApi } from '../helpers/api'
+import { fetchPosts, savePostToApi, removePost } from '../helpers/api'
 
 const FETCHING_POSTS = 'FETCHING_POSTS'
 const RECIEVED_POSTS = 'RECIEVED_POSTS'
 const SORT_POSTS = 'SORT_POSTS'
 const VOTE_POST = 'VOTE_POST'
 const SAVED_POST = 'SAVED_POST'
+const DELETED_POST = 'DELETED_POST'
 
 function fetchingPosts() {
     return {
@@ -59,5 +60,12 @@ export function changeSortOn(sorting) {
     return {
         type: SORT_POSTS,
         sorting
+    }
+}
+
+export function deletedPost(post) {
+    return {
+        type: DELETED_POST,
+        post
     }
 }

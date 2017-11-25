@@ -20,3 +20,9 @@ export const fetchCategories = () => {
     .then(res => res.json())
     .then((json) => json)
 }
+
+export const removePost = (id) => {
+  return fetch(`${API}/posts/${id}`, {method: 'DELETE', ...headers})
+    .then(res => res.json())
+    .then((json) => json)
+}

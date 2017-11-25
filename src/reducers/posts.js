@@ -5,6 +5,7 @@ const RECIEVED_POSTS = 'RECIEVED_POSTS'
 const SORT_POSTS = 'SORT_POSTS'
 const VOTE_POST = 'VOTE_POST'
 const SAVED_POST = 'SAVED_POST'
+const DELETE_POST = 'DELETED_POST'
 
 const initialState = {
     fetching: false,
@@ -30,6 +31,8 @@ export default function reducer(state = initialState, action) {
             });
         case SAVED_POST:
             return { ...state, items: [...state.items, action.post] }
+        case DELETE_POST:
+            return { ...state, post: action.post}
         default:
             return state
     }
