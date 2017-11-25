@@ -4,24 +4,18 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 
-import createBrowserHistory from 'history/createBrowserHistory'
-
-import {
-    BrowserRouter as Router,
-    Route,
-    Link
-  } from 'react-router-dom'
-
-
-
+import { Router, Route, Link, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import posts from './reducers/posts'
 import categories from './reducers/categories'
 
 import './index.css';
-import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+
+import App from './App';
+import DetailPost from './components/detailPost';
+import NewPost from './components/newPost'
 
 const initialState = {
     posts: {
@@ -35,8 +29,6 @@ const initialState = {
         items: []
     }
 }
-
-const customHistory = createBrowserHistory()
 
 const logger = store => next => action => {
     console.group(action.type)
@@ -59,16 +51,22 @@ const store = createStore(
     composeEnhancers(applyMiddleware(thunk, logger))
 )
 
-const history = syncHistoryWithStore(customHistory, store)
 
 function Test() {
     return <p>Just an test</p>
 }
 
+const history = syncHistoryWithStore(browserHistory, store)
+
 ReactDOM.render(
     (
         <Provider store={store}>
-            <App />
+            <Router history={history}>
+                <Route path="/" component={App} />
+                <Route path="/posts/new" component={NewPost} />
+                <Route path="/posts/:id" component={DetailPost} />
+               
+            </Router>
         </Provider>
     ),
     document.getElementById('root')

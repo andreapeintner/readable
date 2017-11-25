@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getPosts, votePost } from '../../actions/posts'
+import { Link } from 'react-router'
 import Vote from '../../fragments/vote'
 
 class Posts extends React.Component {
 
-    constructor(props) {
+    constructor(props, context) {
         super(props)
     }
 
@@ -26,14 +27,15 @@ class Posts extends React.Component {
                 return a[this.props.sortOn] <= b[this.props.sortOn] ? 1 : -1
             })
             .map((post, index) => {
-            return <Post {...post} index={index} onClick={this.props.vote} />
+            return <Link to={`/posts/${post.id}`}><Post {...post} index={index} onClick={this.props.vote} /></Link>
         })
 
         return <ul>{renderPosts}</ul>
     }
 }
 
-function Post({ title, body, author, timestamp, voteScore, index, onClick}) {
+
+function Post({ id, title, body, author, timestamp, voteScore, index, onClick}) {
     return (
         <li>
             <h2>{title}</h2>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import { savePost } from '../../actions/posts'
 
 class NewPost extends React.Component {
@@ -27,17 +28,20 @@ class NewPost extends React.Component {
 
     render() {
         return (
-            <form>
-                <Input type="text" value={this.state.title} name="title" handleChange={this.handleChange} />
-                <Input type="text" value={this.state.author} name="author" handleChange={this.handleChange} />
-                <Textarea value={this.state.body} name="body" handleChange={this.handleChange} />
-                <Select value={this.state.category} name="category" handleChange={this.handleChange} items={this.props.categories} />
-                <button onClick={(e) => {
-                    e.preventDefault()
-                    this.submit()
-                }
-                }>Save</button>
-            </form>
+            <div>
+                <Link to="/">Go back</Link>
+                <form>
+                    <Input type="text" value={this.state.title} name="title" handleChange={this.handleChange} />
+                    <Input type="text" value={this.state.author} name="author" handleChange={this.handleChange} />
+                    <Textarea value={this.state.body} name="body" handleChange={this.handleChange} />
+                    <Select value={this.state.category} name="category" handleChange={this.handleChange} items={this.props.categories} />
+                    <button onClick={(e) => {
+                        e.preventDefault()
+                        this.submit()
+                    }
+                    }>Save</button>
+                </form>
+            </div>
         )
     }
 }
