@@ -30,19 +30,21 @@ class Posts extends React.Component {
             return <Link to={`/posts/${post.id}`}><Post {...post} index={index} onClick={this.props.vote} /></Link>
         })
 
-        return <ul>{renderPosts}</ul>
+        return <ul className="post-list">{renderPosts}</ul>
     }
 }
 
 
 function Post({ id, title, body, author, timestamp, voteScore, index, onClick}) {
     return (
-        <li>
-            <h2>{title}</h2>
-            <p>{body}</p>
-            <span>Published on <FormattedDate timestamp={timestamp} /> by { author } - {voteScore} Votes</span>
-            <Vote post={index} onClick={onClick} />
-        </li>
+        <div className="post-item">
+            <li>
+                <h2>{title}</h2>
+                <p>{body}</p>
+                <span>Published on <FormattedDate timestamp={timestamp} /> by { author } - {voteScore} Votes</span>
+                <Vote post={index} onClick={onClick} />
+            </li>
+        </div>
     )
 }
 
@@ -57,7 +59,7 @@ const mapStateToProps = (state, ownProps) => {
         selectedCategory: state.categories.selected
     }
 }
-    
+
 const mapDispatchToProps = dispatch => {
     return {
       getPosts: () => dispatch(getPosts()),

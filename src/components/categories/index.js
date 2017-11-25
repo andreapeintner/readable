@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getCategories, selectedCategory, clearCategory } from '../../actions/categories'
 
+import styles from '../../styles/index.css'
+
 class Categories extends React.Component {
 
     constructor(props) {
@@ -23,18 +25,18 @@ class Categories extends React.Component {
         const renderCategories = this.props.categories.map((category) => {
             return <Category {...category} onClick={this.selectCategory} selected={this.props.selectedCategory === category.name} />
         })
-        return <ul>{renderCategories}{clearSelected}</ul>
+        return <ul className="category-list">{renderCategories}{clearSelected}</ul>
     }
 }
 
 function Category({ name, url, onClick, selected }) {
     const styling = selected ? { color: 'orange' } : {} 
-    return <li style={styling} onClick={() => onClick(name)}>{name}</li>
+    return <li className="categories"><button className="category-button" style={styling} onClick={() => onClick(name)}>{name}</button></li>
 }
 
 function ClearSelected({ onClick }) {
     return (
-        <li onClick={() => {onClick()}}>&times;</li>
+        <li className="categories"><button onClick={() => {onClick()}}>Show all</button></li>
     )
 }
 

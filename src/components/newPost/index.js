@@ -28,7 +28,8 @@ class NewPost extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="add-post">
+                <h3>Add post</h3>
                 <Link to="/">Go back</Link>
                 <form>
                     <Input type="text" value={this.state.title} name="title" handleChange={this.handleChange} />
@@ -64,29 +65,4 @@ function Textarea({value, name, handleChange }) {
     )
 }
 
-function Select({value, name, items, handleChange }) {
-    const renderOptions = items.map((item) => {
-        return <option value={item.name}>{item.name}</option>
-    })
-    return (
-        <div>
-            <span>{name}:</span>
-            <select onChange={(e) => handleChange(name, e.target.value)}>{renderOptions}</select>
-        </div>
-    )
-}
 
-
-const mapStateToProps = (state, ownProps) => {
-    return {
-        categories: state.categories.items
-    }
-}
-    
-const mapDispatchToProps = dispatch => {
-    return {
-        submit: (post) => dispatch(savePost(post))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewPost)

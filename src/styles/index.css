@@ -1,0 +1,95 @@
+/* Main */
+.container {
+    margin: 50px;
+    padding: 50px;
+}
+/* Header */
+.header h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+/* Categories */
+.category-list {
+    list-style-type: none;
+    /* text-align: center; */
+}
+.categories {
+    display: inline-block;
+    list-style-type: none;
+}
+.categories button{
+    margin: 0 20px;
+    width: 100px;
+    height: 50px;
+    font-size: 1.2em;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.categories button:hover{
+    background-color:#06405b;
+}
+/* Sort posts */
+.sort-items {
+    /* text-align: center; */
+    cursor: pointer;
+    list-style-type: none;
+    margin: 10px;
+}
+
+/* Post items */
+.post-list {
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.post-item {
+    width: 300px;
+    min-height: 200px;
+    border: 1px solid grey;
+    display: inline-block;
+    padding: 20px;
+    margin: 20px;
+}
+.post-item li {
+    list-style-type: none;
+    
+}
+
+/* Add post */
+.add-post{
+    width: 500px;
+    padding: 20px;
+    margin: 20px;
+}
+.add-post span{
+    float: left;
+    margin: 5px 30px 5px 0;
+    min-width: 50px;
+}
+.add-post input, textarea {
+    margin: 5px 0 5px 10px;
+    min-width: 70%;
+}
+.add-post select {
+    margin: 5px 0;
+    min-width: 70%;
+    line-height: 20px;
+}
+.add-post form {
+    padding: 20px;
+    width: auto;
+    border: 1px solid grey;
+}
+.add-post button {
+    margin-top: 15px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 16px;
+}
+.add-post button:hover {
+    background-color: #06405b;
+}
