@@ -64,6 +64,27 @@ function Textarea({value, name, handleChange }) {
         </div>
     )
 }
-
+function Select({value, name, items, handleChange }) {
+    const renderOptions = items.map((item) => {
+        return <option value={item.name}>{item.name}</option>
+    })
+    return (
+        <div>
+            <span>{name}:</span>
+            <select onChange={(e) => handleChange(name, e.target.value)}>{renderOptions}</select>
+        </div>
+    )
+}
+const mapStateToProps = (state, ownProps) => {
+    return {
+        categories: state.categories.items
+    }
+}
+    
+const mapDispatchToProps = dispatch => {
+    return {
+        submit: (post) => dispatch(savePost(post))
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewPost)
