@@ -66,3 +66,4 @@ function Textarea({value, name, handleChange }) {
 }
 
 
+export default connect(mapStateToProps, mapDispatchToProps)(NewPost)
