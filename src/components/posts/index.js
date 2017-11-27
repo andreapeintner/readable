@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getPosts, votePost, deletePost } from '../../actions/posts'
+import { getPosts, votePost, deletedPost } from '../../actions/posts'
 import { Link } from 'react-router'
 import Vote from '../../fragments/vote'
 import { removePost } from '../../helpers/api'
