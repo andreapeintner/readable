@@ -8,12 +8,12 @@ import { Link } from 'react-router'
 function App() {
   return (
     <div className="header">
-      <Link to={"/posts/new"}>Create an new post</Link>
-      <hr />
       <Header />
-      Categories: <Categories />
-      Order Posts: <SortPosts />
-      Posts: <Posts />
+      <hr />
+      <Link to={"/posts/new"}><div className="new-post"><h3>Create an new post</h3></div></Link>
+      <Categories />
+      <SortPosts />
+      <Posts />
     </div>
   )
 }

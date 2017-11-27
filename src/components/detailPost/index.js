@@ -16,7 +16,11 @@ class DetailPost extends React.Component {
     render() {
         const detailPost = this.props.post.map((post) => {
             return (
-                <p>{post.title}</p>
+                <div>
+                    <p>{post.title}</p>
+                    <p>{post.body}</p>
+                    <p>{post.author}</p>
+                </div>
             )
         })
         return (

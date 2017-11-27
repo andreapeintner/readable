@@ -11,7 +11,7 @@ class Posts extends React.Component {
         super(props)
     }
 
-    componentShouldUpdate() {
+    shouldComponentUpdate() {
         return true
     }
 
@@ -60,14 +60,15 @@ const mapStateToProps = (state, ownProps) => {
     return {
         posts: state.posts.items,
         sortOn: state.posts.sorting,
-        selectedCategory: state.categories.selected
+        selectedCategory: state.categories.selected,
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
       getPosts: () => dispatch(getPosts()),
-      vote: (post, vote) => dispatch(votePost(post, vote))
+      vote: (post, vote) => dispatch(votePost(post, vote)),
+      deletedPost: () => dispatch(deletedPost())
     }
 }
 
