@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { getPosts } from '../../actions/posts'
+import NewComment from '../newComment'
+import Comments from '../comments'
 
 class DetailPost extends React.Component {
 
@@ -27,17 +29,20 @@ class DetailPost extends React.Component {
             <div>
                 <Link to="/">Go back</Link>
                 {detailPost}
+                <Comments postId={this.props.postId} />
+                <NewComment postId={this.props.postId} />
             </div>
         )
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const post = state.posts.items.filter((post) => {
+    const post = Object.values(state.posts.items).filter((post) => {
         return post.id === ownProps.params.id
     })
     return {
-        post: post
+        post: post,
+        postId: ownProps.params.id
     }
 }
     

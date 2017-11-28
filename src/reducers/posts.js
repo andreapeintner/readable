@@ -5,7 +5,7 @@ const RECIEVED_POSTS = 'RECIEVED_POSTS'
 const SORT_POSTS = 'SORT_POSTS'
 const VOTE_POST = 'VOTE_POST'
 const SAVED_POST = 'SAVED_POST'
-const DELETE_POST = 'DELETED_POST'
+const DELETED_POST = 'DELETED_POST'
 
 const initialState = {
     fetching: false,
@@ -18,7 +18,11 @@ export default function reducer(state = initialState, action) {
         case FETCHING_POSTS:
             return { ...state, fetching: true }
         case RECIEVED_POSTS:
-            return { ...state, items: action.posts, fetching: false }
+            const postObject = action.posts.reduce((acc, curr) => {
+                acc[curr.id] = curr
+                return acc
+            }, {})
+            return { ...state, items: postObject, fetching: false }
         case SORT_POSTS:
             return { ...state, sorting: action.sorting }
         case VOTE_POST:
@@ -30,9 +34,12 @@ export default function reducer(state = initialState, action) {
                 }
             });
         case SAVED_POST:
-            return { ...state, items: [...state.items, action.post] }
-        case DELETE_POST:
-            return { ...state, post: action.post}
+            const posts = {...state.items}
+            posts[action.post.id] = action.post
+            return { ...state, items: posts }
+        case DELETED_POST:
+            const { [action.id]: u, ...rest } = state.items
+            return { ...state, items: rest }
         default:
             return state
     }

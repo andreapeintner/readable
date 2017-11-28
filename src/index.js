@@ -9,6 +9,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import posts from './reducers/posts'
 import categories from './reducers/categories'
+import comments from './reducers/comments'
 
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
@@ -45,6 +46,7 @@ const store = createStore(
     combineReducers({
         posts,
         categories,
+        comments,
         routing: routerReducer
     }),
     initialState,

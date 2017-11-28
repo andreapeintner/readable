@@ -20,6 +20,15 @@ function savedPost(post) {
     }
 }
 
+
+function deletedPost(id) {
+    return {
+        type: DELETED_POST,
+        id
+    }
+}
+
+
 export function recievedPosts(posts) {
     return {
         type: RECIEVED_POSTS,
@@ -46,6 +55,16 @@ export function getPosts() {
     }
 }
 
+export function deletePost(id) {
+    return function (dispatch) {
+        removePost(id).then((post) => {
+            return dispatch(deletedPost(post.id))
+        }).catch((err) => {
+            console.error(err)
+        })
+    }
+}    
+
 export function savePost(post) {
     return function (dispatch) {
         savePostToApi(post).then((post) => {
@@ -60,12 +79,5 @@ export function changeSortOn(sorting) {
     return {
         type: SORT_POSTS,
         sorting
-    }
-}
-
-export function deletedPost(post) {
-    return {
-        type: DELETED_POST,
-        post
     }
 }
