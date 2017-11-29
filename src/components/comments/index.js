@@ -1,6 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getCommentsForPost, deleteCommentForPost } from '../../actions/comments'
+import { getCommentsForPost, voteComment, deleteCommentForPost } from '../../actions/comments'
+import Vote from '../../fragments/vote'
+import { Link } from 'react-router'
+
+import styles from '../../styles/index.css'
 
 class Comments extends React.Component {
 
@@ -13,17 +17,19 @@ class Comments extends React.Component {
     }
 
     render() {
-        const renderComments = this.props.comments.map((comment) => <Comment {...comment} deleteComment={this.props.deleteCommentForPost} />)
-        return <div>{renderComments}</div>
+        const renderComments = this.props.comments.map((comment) => <Comment {...comment} postId={this.props.postId} onClick={this.props.vote} deleteComment={this.props.deleteCommentForPost} />)
+        return <div className="comment-container">{renderComments}</div>
     }
 }
 
-function Comment({ id, author, body, deleteComment }) {
+function Comment({ id, author, body, voteScore, postId, deleteComment, onClick }) {
     return (
-        <div>
+        <div className="comment-item">
             <p>{body}</p>
-            <span>{author}</span>
-            <button onClick={() => deleteComment(id)}>&times;</button>
+            <span>- <i>{author}</i> ({voteScore} votes)</span>
+            <button className="delete-comment" onClick={() => deleteComment(id)}>&times;</button>
+            <Vote id={id} onClick={onClick} />
+            <Link to={`/posts/${postId}/comment/${id}/edit`}>Edit</Link>
         </div>
     )
 }
@@ -37,6 +43,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
       getCommentsForPost: (postId) => dispatch(getCommentsForPost(postId)),
+      vote: (comment, vote) => dispatch(voteComment(comment, vote)),
       deleteCommentForPost: (commentId) => dispatch(deleteCommentForPost(commentId))
     }
 }

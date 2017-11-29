@@ -1,4 +1,4 @@
-import { fetchPosts, savePostToApi, removePost } from '../helpers/api'
+import { fetchPosts, savePostToApi, saveEdittedPostToApi, removePost } from '../helpers/api'
 
 const FETCHING_POSTS = 'FETCHING_POSTS'
 const RECIEVED_POSTS = 'RECIEVED_POSTS'
@@ -6,6 +6,7 @@ const SORT_POSTS = 'SORT_POSTS'
 const VOTE_POST = 'VOTE_POST'
 const SAVED_POST = 'SAVED_POST'
 const DELETED_POST = 'DELETED_POST'
+const EDITED_POST = 'EDITED_POST'
 
 function fetchingPosts() {
     return {
@@ -25,6 +26,13 @@ function deletedPost(id) {
     return {
         type: DELETED_POST,
         id
+    }
+}
+
+function editedPost(post) {
+    return {
+        type: EDITED_POST,
+        post
     }
 }
 
@@ -69,6 +77,16 @@ export function savePost(post) {
     return function (dispatch) {
         savePostToApi(post).then((post) => {
             return dispatch(savedPost(post))
+        }).catch((err) => {
+            console.error(err)
+        })
+    }
+}
+
+export function editPost(post) {
+    return function (dispatch) {
+        saveEdittedPostToApi(post).then((post) => {
+            return dispatch(editedPost(post))
         }).catch((err) => {
             console.error(err)
         })

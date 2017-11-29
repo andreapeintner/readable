@@ -44,7 +44,8 @@ function Post({ id, title, body, author, timestamp, voteScore, index, onClick}) 
                     </Link>
                     <p>{body}</p>
                     <span>Published on <FormattedDate timestamp={timestamp} /> by { author } ({voteScore} Votes)</span>
-                    <Vote post={id} onClick={onClick} />
+                    <Vote id={id} onClick={onClick} />
+                    <Link to={`/posts/${id}/edit`}>Edit</Link>
                 </li>
             </div>
     )

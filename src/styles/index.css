@@ -71,7 +71,7 @@
 .add-post{
     width: 500px;
     padding: 20px;
-    margin: 20px;
+    margin: 0 auto;
 }
 .add-post span{
     float: left;
@@ -101,4 +101,36 @@
 }
 .add-post button:hover {
     background-color: #06405b;
+}
+
+/* Comments */
+.comment-view {
+    padding: 50px;
+}
+.back {
+    margin-left: 40px;
+}
+.comment-container {
+    margin: 0 auto;
+    border: 1px solid #06405b;
+    max-width: 500px;
+    padding: 10px;
+    position: relative;
+}
+.comment-item {
+    border-bottom: 1px solid gray;
+    text-align: left;
+}
+.comment-item p {
+    text-align: left;
+}
+.comment-item span {
+    position: relative;
+}
+.delete-comment {
+    position: absolute;
+    right: 10px;
+}
+.save-comment button{
+    
 }

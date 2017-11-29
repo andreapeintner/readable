@@ -17,6 +17,8 @@ import registerServiceWorker from './registerServiceWorker';
 import App from './App';
 import DetailPost from './components/detailPost';
 import NewPost from './components/newPost'
+import EditPost from './components/editPost'
+import EditComment from './components/editComment'
 
 const initialState = {
     posts: {
@@ -66,8 +68,9 @@ ReactDOM.render(
             <Router history={history}>
                 <Route path="/" component={App} />
                 <Route path="/posts/new" component={NewPost} />
+                <Route path="/posts/:id/edit" component={EditPost} />
+                <Route path="/posts/:postId/comment/:commentId/edit" component={EditComment} />
                 <Route path="/posts/:id" component={DetailPost} />
-               
             </Router>
         </Provider>
     ),

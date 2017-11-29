@@ -4,6 +4,7 @@ const FETCHING_COMMENTS = 'FETCHING_COMMENTS'
 const RECIEVED_COMMENTS = 'RECIEVED_COMMENTS'
 const SAVED_COMMENT = 'SAVED_COMMENT'
 const DELETED_COMMENT = 'DELETED_COMMENT'
+const VOTED_COMMENT = 'VOTED_COMMENT'
 
 const initialState = {
     fetching: false,
@@ -20,6 +21,14 @@ export default function reducer(state = initialState, action) {
                 return acc
             }, {})
             return { ...state, items: commentObject, fetching: false }
+        case VOTED_COMMENT:
+            return update(state, { 
+                items: { 
+                [action.comment]: {
+                    voteScore: {$apply: function(x) {return x + action.vote}}
+                }
+                }
+            });
         case SAVED_COMMENT:
             const comments = {...state.items}
             comments[action.comment.id] = action.comment
