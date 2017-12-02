@@ -18,7 +18,7 @@ class DetailPost extends React.Component {
     render() {
         const detailPost = this.props.post.map((post) => {
             return (
-                <div className="comment-container">
+                <div key={post.id} className="comment-container">
                     <p>{post.title}</p>
                     <p>{post.body}</p>
                     <p>{post.author}</p>
@@ -27,7 +27,7 @@ class DetailPost extends React.Component {
         })
         return (
             <div className="comment-view">
-                <h2>Comment Detail</h2>
+                <h2>Post Detail</h2>
                 <Link to="/" className="back">Go back</Link>
                 <div className="comment-item">
                     {detailPost}
