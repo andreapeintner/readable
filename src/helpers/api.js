@@ -12,7 +12,7 @@ export const fetchPosts = () => {
 
 export const savePostToApi = (post) => {
   const newPost = {...post, id: Math.floor(Math.random()* 1000000).toString(), timestamp: Date.now()}
-  return fetch(`${API}/posts/`, {method: 'POST', body: JSON.stringify(post), ...headers}).then(res => res.json())
+  return fetch(`${API}/posts/`, {method: 'POST', body: JSON.stringify(newPost), ...headers}).then(res => res.json())
   .then((json) => json)
 }
 
