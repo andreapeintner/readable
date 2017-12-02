@@ -1,13 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import { saveComment } from '../../actions/comments'
 
 class NewComment extends React.Component {
 
     constructor(props) {
         super(props)
-        console.log(props)
         this.state = {
             parentId: props.postId,
             body: null,
@@ -25,6 +24,7 @@ class NewComment extends React.Component {
 
     submit() {
         this.props.submit(this.state)
+        browserHistory.push('/')
     }
 
     render() {

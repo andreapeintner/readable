@@ -2,16 +2,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { savePost } from '../../actions/posts'
+import { browserHistory } from 'react-router'
 
 class NewPost extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            title: null,
-            body: null,
-            author: null,
-            category: null
+            id: ' ',
+            timestamp: ' ',
+            title: ' ',
+            body: ' ',
+            author: ' ',
+            category: ' '
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -24,6 +27,7 @@ class NewPost extends React.Component {
 
     submit() {
         this.props.submit(this.state)
+        browserHistory.push('/')
     }
 
     render() {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import { editPost, getPosts } from '../../actions/posts'
 
 class EditPost extends React.Component {
@@ -36,6 +36,7 @@ class EditPost extends React.Component {
 
     submit() {
         this.props.submit(this.state)
+        browserHistory.push('/')
     }
 
     shouldComponentUpdate(nextProps, nextState){
