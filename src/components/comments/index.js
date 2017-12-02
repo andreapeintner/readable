@@ -17,8 +17,8 @@ class Comments extends React.Component {
     }
 
     render() {
-        const renderComments = this.props.comments.map((comment) => <Comment {...comment} postId={this.props.postId} onClick={this.props.vote} deleteComment={this.props.deleteCommentForPost} />)
-        return <div className="comment-container">{renderComments}</div>
+        const renderComments = this.props.comments.map((comment) => <Comment key={comment.id} {...comment} postId={this.props.postId} onClick={this.props.vote} deleteComment={this.props.deleteCommentForPost} />)
+        return <div className="comment-container"><h4>Comments:</h4>{renderComments}</div>
     }
 }
 

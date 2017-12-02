@@ -23,7 +23,7 @@ class Categories extends React.Component {
     render() {
         const clearSelected = this.props.selectedCategory ? <ClearSelected onClick={this.props.clearCategory} /> : null
         const renderCategories = this.props.categories.map((category) => {
-            return <Category {...category} onClick={this.selectCategory} selected={this.props.selectedCategory === category.name} />
+            return <Category key={category.name} {...category} onClick={this.selectCategory} selected={this.props.selectedCategory === category.name} />
         })
         return <ul className="category-list">{renderCategories}{clearSelected}</ul>
     }

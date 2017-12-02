@@ -6,7 +6,7 @@ function SortPosts({ changeSortOn, sortOn }) {
     const availableSortKeys = ['voteScore', 'timestamp']
     const renderSortKeys = availableSortKeys.map((sortKey) => {
         const styling = sortOn === sortKey ? { color: 'orange' } : {} 
-        return <li className="sort-items" onClick={() => changeSortOn(sortKey)} style={styling}>{sortKey}</li>
+        return <li key={sortKey} className="sort-items" onClick={() => changeSortOn(sortKey)} style={styling}>{sortKey}</li>
     })
     return <ul className="sort-list">Sort by: {renderSortKeys}</ul>
 }
