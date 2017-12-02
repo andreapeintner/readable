@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getPosts, votePost, deletePost } from '../../actions/posts'
 import { Link } from 'react-router'
 import Vote from '../../fragments/vote'
+import Comments from '../comments'
 
 class Posts extends React.Component {
 
@@ -23,29 +24,30 @@ class Posts extends React.Component {
             })
             .map((post, index) => {
             return (
-                <div>
+                <div key={index}>
                    <div onClick={() => this.props.deletePost(post.id)}>&times;</div>
                     <Post {...post} index={index} onClick={this.props.vote} key={post.id}/>
                 </div>
             )
         })
-
         return <ul className="post-list">{renderPosts}</ul>
     }
 }
 
 
-function Post({ id, title, body, author, timestamp, voteScore, index, onClick}) {
+function Post({ id, title, body, author, timestamp, voteScore, index, onClick, commentCount}) {
     return (
             <div className="post-item">
-                <li key={id}>
+                <li>
                     <Link to={`/posts/${id}`}>
                         <h2>{title}</h2>
                     </Link>
                     <p>{body}</p>
                     <span>Published on <FormattedDate timestamp={timestamp} /> by { author } ({voteScore} Votes)</span>
                     <Vote id={id} onClick={onClick} />
-                    <Link to={`/posts/${id}/edit`}>Edit</Link>
+                    <div> Comments: {commentCount}</div>
+                    <button><Link to={`/posts/${id}`}>View/Add Comment</Link></button>
+                    <button><Link to={`/posts/${id}/edit`}>Edit Post</Link></button>
                 </li>
             </div>
     )
