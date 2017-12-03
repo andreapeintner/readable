@@ -19,18 +19,20 @@ class DetailPost extends React.Component {
         const detailPost = this.props.post.map((post) => {
             return (
                 <div key={post.id} className="comment-container">
-                    <p>{post.title}</p>
+                    <h2>{post.title}</h2>
                     <p>{post.body}</p>
-                    <p>{post.author}</p>
+                    <p><i>{post.author}</i></p>
                 </div>
             )
         })
         return (
-            <div className="comment-view">
-                <h2>Post Detail</h2>
-                <Link to="/" className="back">Go back</Link>
+            <div className="add-post">
+                <h3>Post Detail</h3>
+                <Link to="/">Go back</Link>
                 <div className="comment-item">
                     {detailPost}
+                </div>
+                <div>
                     <Comments postId={this.props.postId} />
                     <NewComment postId={this.props.postId} />
                 </div>

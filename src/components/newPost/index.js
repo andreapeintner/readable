@@ -53,7 +53,7 @@ class NewPost extends React.Component {
 
 function Input({ type, value, name, handleChange }) {
     return (
-        <div>
+        <div className="input">
             <span>{name}:</span>
             <input type={type} value={value} onChange={(e) => handleChange(name, e.target.value)} />
         </div>
@@ -62,7 +62,7 @@ function Input({ type, value, name, handleChange }) {
 
 function Textarea({value, name, handleChange }) {
     return (
-        <div>
+        <div className="textarea">
             <span>{name}:</span>
             <textarea onChange={(e) => handleChange(name, e.target.value)}>{value}</textarea>
         </div>
@@ -73,7 +73,7 @@ function Select({value, name, items, handleChange }) {
         return <option value={item.name}>{item.name}</option>
     })
     return (
-        <div>
+        <div className="select">
             <span>{name}:</span>
             <select onChange={(e) => handleChange(name, e.target.value)}>{renderOptions}</select>
         </div>

@@ -43,11 +43,13 @@ function Post({ id, title, body, author, timestamp, voteScore, index, onClick, c
                         <h2>{title}</h2>
                     </Link>
                     <p>{body}</p>
-                    <span>Published on <FormattedDate timestamp={timestamp} /> by { author } ({voteScore} Votes)</span>
-                    <Vote id={id} onClick={onClick} />
+                    <div>Published on <FormattedDate timestamp={timestamp} /> </div>
+                    <div>by <i>{ author } </i></div><br />
+                    <div>({voteScore} Votes)</div>
+                    <Vote id={id} onClick={onClick} /><br />
                     <div> Comments: {commentCount}</div>
-                    <button><Link to={`/posts/${id}`}>View/Add Comment</Link></button>
-                    <button><Link to={`/posts/${id}/edit`}>Edit Post</Link></button>
+                    <button className="btn_comment"><Link to={`/posts/${id}`}>View/Add Comment</Link></button>
+                    <button className="btn_edit"><Link to={`/posts/${id}/edit`}>Edit Post</Link></button>
                 </li>
             </div>
     )

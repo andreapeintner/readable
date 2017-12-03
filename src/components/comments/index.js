@@ -26,10 +26,12 @@ function Comment({ id, author, body, voteScore, postId, deleteComment, onClick }
     return (
         <div className="comment-item">
             <p>{body}</p>
-            <span>- <i>{author}</i> ({voteScore} votes)</span>
+            <div>- <i>{author}</i></div><br/>
+            <div>({voteScore} votes)</div>
             <button className="delete-comment" onClick={() => deleteComment(id)}>&times;</button>
-            <Vote id={id} onClick={onClick} />
+            <Vote id={id} onClick={onClick} /> <br />
             <Link to={`/posts/${postId}/comment/${id}/edit`}>Edit</Link>
+            <hr />
         </div>
     )
 }

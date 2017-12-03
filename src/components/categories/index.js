@@ -30,7 +30,7 @@ class Categories extends React.Component {
 }
 
 function Category({ name, url, onClick, selected }) {
-    const styling = selected ? { color: 'orange' } : {} 
+    const styling = selected ? { backgroundColor: '#dadada', color: '#06405b' } : {} 
     return <li className="categories"><button className="category-button" style={styling} onClick={() => onClick(name)}>{name}</button></li>
 }
 

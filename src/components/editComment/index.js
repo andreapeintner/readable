@@ -43,6 +43,7 @@ class EditComment extends React.Component {
         return (
             <div className="add-post">
                 <h3>Tell us something</h3>
+                <Link to={`/posts/${this.props.postId}`}>Go back</Link>
                 <form>
                     <Textarea value={this.state.body} name="body" handleChange={this.handleChange} />
                     <button onClick={(e) => {
@@ -51,7 +52,6 @@ class EditComment extends React.Component {
                     }
                     }>Save</button>
                 </form>
-                <Link to={`/posts/${this.props.postId}`}>Go back</Link>
             </div>
         )
     }

@@ -7,13 +7,19 @@ import { Link } from 'react-router'
 
 function App() {
   return (
-    <div className="header">
-      <Header />
-      <hr />
-      <Link to={"/posts/new"}><div className="new-post"><h3>Create an new post</h3></div></Link>
-      <Categories />
-      <SortPosts />
-      <Posts />
+    <div>
+      <div className="header">
+        <Header />
+        <hr />
+        {/* <Link to={"/posts/new"}><div className="new-post"><h3>Create an new post</h3></div></Link> */}
+      </div>
+      <div className="main">
+        <div className="select_sort">
+          <Categories />
+          <SortPosts />
+        </div>
+        <Posts />
+      </div>
     </div>
   )
 }
