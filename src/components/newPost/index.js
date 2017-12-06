@@ -9,12 +9,12 @@ class NewPost extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            id: ' ',
-            timestamp: ' ',
-            title: ' ',
-            body: ' ',
-            author: ' ',
-            category: ' '
+            id: '',
+            timestamp: '',
+            title: '',
+            body: '',
+            author: '',
+            category: ''
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -64,7 +64,7 @@ function Textarea({value, name, handleChange }) {
     return (
         <div className="textarea">
             <span>{name}:</span>
-            <textarea onChange={(e) => handleChange(name, e.target.value)}>{value}</textarea>
+            <textarea defaultValue={value} onChange={(e) => handleChange(name, e.target.value)} />
         </div>
     )
 }

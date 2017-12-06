@@ -9,8 +9,8 @@ class NewComment extends React.Component {
         super(props)
         this.state = {
             parentId: props.postId,
-            body: null,
-            author: null,
+            body: '',
+            author: '',
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -58,9 +58,13 @@ function Textarea({value, name, handleChange }) {
     return (
         <div>
             <span>{name}:</span>
-            <textarea onChange={(e) => handleChange(name, e.target.value)}>{value}</textarea>
+            <textarea defaultValue={value} onChange={(e) => handleChange(name, e.target.value)} />
         </div>
     )
+}
+
+const mapStateToProps = (state, ownProps) => {
+    return {}
 }
 
 const mapDispatchToProps = dispatch => {
@@ -69,4 +73,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(() => {}, mapDispatchToProps)(NewComment)
+export default connect(mapStateToProps, mapDispatchToProps)(NewComment)
