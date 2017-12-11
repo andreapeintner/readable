@@ -1,9 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { getCategories, selectedCategory, clearCategory } from '../../actions/categories'
 
-import styles from '../../styles/index.css'
 
 class Categories extends React.Component {
 

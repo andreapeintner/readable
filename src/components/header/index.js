@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from '../../styles/index.css'
 import { Link } from 'react-router'
 
 function Header() {

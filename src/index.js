@@ -4,7 +4,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 
-import { Router, Route, Link, browserHistory } from 'react-router'
+import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import posts from './reducers/posts'
@@ -54,11 +54,6 @@ const store = createStore(
     initialState,
     composeEnhancers(applyMiddleware(thunk, logger))
 )
-
-
-function Test() {
-    return <p>Just an test</p>
-}
 
 const history = syncHistoryWithStore(browserHistory, store)
 

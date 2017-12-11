@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link, browserHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 import { saveComment } from '../../actions/comments'
 
 class NewComment extends React.Component {
@@ -16,7 +16,6 @@ class NewComment extends React.Component {
     }
 
     handleChange(key, value) {
-        console.log(this.state)
         var obj = {...this.state}
         obj[key] = value
         this.setState(obj)

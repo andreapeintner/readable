@@ -7,7 +7,6 @@ class EditPost extends React.Component {
 
     constructor(props) {
         super(props)
-        console.log(this.props, 'console')
         this.state = {
             id: this.props.postId,
             title: this.props.post ? this.props.post.title : null, 
@@ -76,17 +75,6 @@ function Textarea({value, name, handleChange }) {
         <div>
             <span>{name}:</span>
             <textarea value={value} onChange={(e) => handleChange(name, e.target.value)}>{value}</textarea>
-        </div>
-    )
-}
-function Select({value, name, items, handleChange }) {
-    const renderOptions = items.map((item) => {
-        return <option value={item.name}>{item.name}</option>
-    })
-    return (
-        <div>
-            <span>{name}:</span>
-            <select onChange={(e) => handleChange(name, e.target.value)}>{renderOptions}</select>
         </div>
     )
 }

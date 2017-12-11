@@ -57,15 +57,6 @@ class EditComment extends React.Component {
     }
 }
 
-function Input({ type, value, name, handleChange }) {
-    return (
-        <div>
-            <span>{name}:</span>
-            <input type={type} value={value} onChange={(e) => handleChange(name, e.target.value)} />
-        </div>
-    )
-}
-
 function Textarea({value, name, handleChange }) {
     return (
         <div>

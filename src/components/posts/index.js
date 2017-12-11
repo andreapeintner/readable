@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getPosts, votePost, deletePost } from '../../actions/posts'
 import { Link } from 'react-router'
 import Vote from '../../fragments/vote'
-import Comments from '../comments'
+import Moment from 'react-moment'
 
 class Posts extends React.Component {
 
@@ -56,11 +56,7 @@ function Post({ id, title, body, author, timestamp, voteScore, index, onClick, c
 }
 
 function FormattedDate({ timestamp }) {
-    return <span>{timestamp}</span>
-}
-
-function DeletePost(post) {
-    return <div><button>&times;</button></div>
+    return <span><Moment>{timestamp}</Moment></span>
 }
 
 const mapStateToProps = (state, ownProps) => {
