@@ -14,6 +14,7 @@ const initialState = {
 }
 
 export default function reducer(state = initialState, action) {
+    console.log(action.type);
     switch(action.type) {
         case FETCHING_POSTS:
             return { ...state, fetching: true }

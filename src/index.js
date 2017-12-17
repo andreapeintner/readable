@@ -11,14 +11,17 @@ import posts from './reducers/posts'
 import categories from './reducers/categories'
 import comments from './reducers/comments'
 
-import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+import './index.css'
+import registerServiceWorker from './registerServiceWorker'
 
-import App from './App';
-import DetailPost from './components/detailPost';
+import App from './App'
+import DetailPost from './components/detailPost'
 import NewPost from './components/newPost'
 import EditPost from './components/editPost'
 import EditComment from './components/editComment'
+import Categories from './components/categories'
+import Posts from './components/posts'
+import NotFound from './components/notFound'
 
 const initialState = {
     posts: {
@@ -62,10 +65,12 @@ ReactDOM.render(
         <Provider store={store}>
             <Router history={history}>
                 <Route path="/" component={App} />
+                <Route path="/:category" component={App} />           
                 <Route path="/posts/new" component={NewPost} />
                 <Route path="/posts/:id/edit" component={EditPost} />
                 <Route path="/posts/:postId/comment/:commentId/edit" component={EditComment} />
-                <Route path="/posts/:id" component={DetailPost} />
+                <Route path="/:category/:id" component={DetailPost} />
+                <Route path="*" component={NotFound} />
             </Router>
         </Provider>
     ),

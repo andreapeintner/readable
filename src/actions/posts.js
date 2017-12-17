@@ -1,4 +1,4 @@
-import { fetchPosts, savePostToApi, saveEdittedPostToApi, removePost } from '../helpers/api'
+import { fetchPosts, savePostToApi, saveEdittedPostToApi, removePost, votePostInApi, fetchComments, deleteComment } from '../helpers/api'
 
 const FETCHING_POSTS = 'FETCHING_POSTS'
 const RECIEVED_POSTS = 'RECIEVED_POSTS'
@@ -44,11 +44,20 @@ export function recievedPosts(posts) {
     }
 }
 
-export function votePost(post, vote) {
+export function votedPost(post, vote) {
     return {
         type: VOTE_POST,
         post,
         vote
+    }
+}
+export function votePost(id, vote) {
+    return function (dispatch) {
+        votePostInApi(id, vote).then((post) => {
+            return dispatch(votedPost(id, vote))
+        }).catch((err) => {
+            console.error(err)
+        })
     }
 }
 
@@ -64,6 +73,11 @@ export function getPosts() {
 }
 
 export function deletePost(id) {
+    fetchComments(id).then((comments) => { 
+        comments.forEach(comment => {
+            deleteComment(comment.id)
+        });
+    });
     return function (dispatch) {
         removePost(id).then((post) => {
             return dispatch(deletedPost(post.id))
@@ -71,7 +85,7 @@ export function deletePost(id) {
             console.error(err)
         })
     }
-}    
+}
 
 export function savePost(post) {
     return function (dispatch) {

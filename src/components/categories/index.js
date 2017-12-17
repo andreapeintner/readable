@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getCategories, selectedCategory, clearCategory } from '../../actions/categories'
-
+import { Link } from 'react-router'
 
 class Categories extends React.Component {
 
@@ -21,7 +21,7 @@ class Categories extends React.Component {
     render() {
         const clearSelected = this.props.selectedCategory ? <ClearSelected onClick={this.props.clearCategory} /> : null
         const renderCategories = this.props.categories.map((category) => {
-            return <Category key={category.name} {...category} onClick={this.selectCategory} selected={this.props.selectedCategory === category.name} />
+            return <Link to={`/${category.path}`}key={category.name}><Category {...category} onClick={this.selectCategory} selected={this.props.selectedCategory === category.name} /></Link>
         })
         return <ul className="category-list">{renderCategories}{clearSelected}</ul>
     }
@@ -34,7 +34,7 @@ function Category({ name, url, onClick, selected }) {
 
 function ClearSelected({ onClick }) {
     return (
-        <li className="categories"><button onClick={() => {onClick()}}>Show all</button></li>
+        <li className="categories"><Link to="/"><button onClick={() => {onClick()}}>Show all</button></Link></li>
     )
 }
 

@@ -44,6 +44,11 @@ export const voteCommentInApi = (id, vote) => {
   return fetch(`${API}/comments/${id}`, {method: 'POST', body: JSON.stringify(option), ...headers})
 }
 
+export const votePostInApi = (id, vote) => {
+  const option = {option: vote ? 'upVote' : 'downVote'}
+  return fetch(`${API}/posts/${id}`, {method: 'POST', body: JSON.stringify(option), ...headers})
+}
+
 export const fetchComments = (postId) => {
   return fetch(`${API}/posts/${postId}/comments`, headers)
     .then(res => res.json())

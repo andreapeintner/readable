@@ -1,9 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getPosts, votePost, deletePost } from '../../actions/posts'
+import { getPosts, votePost, deletePost, deletePostWithComments } from '../../actions/posts'
+import { deleteCommentForPost } from '../../actions/comments'
 import { Link } from 'react-router'
 import Vote from '../../fragments/vote'
 import Moment from 'react-moment'
+import Comment from '../comments'
+import NotFound from '../notFound'
 
 class Posts extends React.Component {
 
@@ -15,6 +18,7 @@ class Posts extends React.Component {
         this.props.getPosts();
     }
     render() {
+          
         const renderPosts = this.props.posts.filter(
             (post) => {
                 return this.props.selectedCategory === null ||
@@ -35,11 +39,11 @@ class Posts extends React.Component {
 }
 
 
-function Post({ id, title, body, author, timestamp, voteScore, index, onClick, commentCount}) {
+function Post({ id, title, body, author, timestamp, voteScore, index, onClick, commentCount, category }) {
     return (
             <div className="post-item">
-                <li>
-                    <Link to={`/posts/${id}`}>
+               <li>
+                    <Link to={`/${category}/${id}`}>
                         <h2>{title}</h2>
                     </Link>
                     <p>{body}</p>
@@ -48,7 +52,7 @@ function Post({ id, title, body, author, timestamp, voteScore, index, onClick, c
                     <div>({voteScore} Votes)</div>
                     <Vote id={id} onClick={onClick} /><br />
                     <div> Comments: {commentCount}</div>
-                    <button className="btn_comment"><Link to={`/posts/${id}`}>View/Add Comment</Link></button>
+                    <button className="btn_comment"><Link to={`/category/${category}/posts/${id}`}>View/Add Comment</Link></button>
                     <button className="btn_edit"><Link to={`/posts/${id}/edit`}>Edit Post</Link></button>
                 </li>
             </div>

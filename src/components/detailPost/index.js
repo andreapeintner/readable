@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import { getPosts } from '../../actions/posts'
 import NewComment from '../newComment'
 import Comments from '../comments'
+import NotFound from '../notFound'
 
 class DetailPost extends React.Component {
 
@@ -14,16 +15,21 @@ class DetailPost extends React.Component {
     componentDidMount() {
         this.props.getPosts();
     }
-
+    
     render() {
+
+        if(this.props.post.length <= 0) {
+            return <NotFound />;
+        } 
+        
         const detailPost = this.props.post.map((post) => {
-            return (
-                <div key={post.id} className="comment-container">
-                    <h2>{post.title}</h2>
-                    <p>{post.body}</p>
-                    <p><i>{post.author}</i></p>
-                </div>
-            )
+                return (
+                    <div key={post.id} className="comment-container">
+                        <h2>{post.title}</h2>
+                        <p>{post.body}</p>
+                        <p><i>{post.author}</i></p>
+                    </div>
+                )
         })
         return (
             <div className="add-post">

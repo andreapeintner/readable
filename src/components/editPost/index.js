@@ -46,7 +46,7 @@ class EditPost extends React.Component {
         return (
             <div className="add-post">
                 <h3>Edit post</h3>
-                <Link to={`/posts/${this.props.postId}`}>Go back</Link>
+                <Link to={`/`}>Go back</Link>
                 <form>
                     <Input type="text" value={this.state.title} name="title" handleChange={this.handleChange} />
                     <Textarea value={this.state.body} name="body" handleChange={this.handleChange} />
