@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getPosts, votePost, deletePost, deletePostWithComments } from '../../actions/posts'
+import { getPosts, votePost, deletePost } from '../../actions/posts'
 import { deleteCommentForPost } from '../../actions/comments'
 import { Link } from 'react-router'
 import Vote from '../../fragments/vote'
@@ -52,7 +52,7 @@ function Post({ id, title, body, author, timestamp, voteScore, index, onClick, c
                     <div>({voteScore} Votes)</div>
                     <Vote id={id} onClick={onClick} /><br />
                     <div> Comments: {commentCount}</div>
-                    <button className="btn_comment"><Link to={`/category/${category}/posts/${id}`}>View/Add Comment</Link></button>
+                    <button className="btn_comment"><Link to={`/${category}/${id}`}>View/Add Comment</Link></button>
                     <button className="btn_edit"><Link to={`/posts/${id}/edit`}>Edit Post</Link></button>
                 </li>
             </div>
